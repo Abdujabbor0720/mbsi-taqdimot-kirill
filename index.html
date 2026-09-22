@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>«Academy IT Star» — Сунъий интеллект маркази</title>
+<meta name="description" content="Балиқчи тумани, «Academy IT Star» Сунъий интеллект маркази: жорий ҳолат ва 2027 йил режаси.">
+<meta name="theme-color" content="#4f9a22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=PT+Sans+Caption:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --page: #e6e8e4;
+    --panel: #ffffff;
+    --tile: #eff1ed;
+    --tile-line: #e2e5df;
+    --green-900: #2f6a12;
+    --green-700: #3f8a1a;
+    --green-600: #4f9a22;
+    --green-500: #62ad2b;
+    --green-400: #7cbf35;
+    --green-300: #9bd04f;
+    --green-100: #e8f4d9;
+    --ink: #262a24;
+    --ink-2: #4a5047;
+    --ink-3: #7a8176;
+    --grad: linear-gradient(90deg, #4a9620 0%, #6fb52f 55%, #92cb44 100%);
+    --grad-v: linear-gradient(180deg, #62ad2b 0%, #4a9620 100%);
+    --r-lg: 22px;
+    --r-md: 16px;
+    --r-sm: 10px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: "PT Sans", "Segoe UI", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  .num { font-family: "PT Sans Caption", "PT Sans", sans-serif; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+  svg.i { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* ---------- 1920×1080 полотно, экранга мосланади ---------- */
+  .viewport { position: fixed; inset: 0; overflow: hidden; }
+  .stage {
+    width: 1920px; height: 1080px;
+    padding: 26px 28px 28px;
+    display: grid;
+    grid-template-rows: 84px 1fr;
+    gap: 18px;
+    position: absolute; left: 50%; top: 50%;
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ---------- Сарлавҳа ---------- */
+  .top { display: grid; grid-template-columns: 1fr 548px; gap: 22px; }
+  .title-bar {
+    background: var(--grad);
+    border-radius: var(--r-lg);
+    display: flex; align-items: center; gap: 22px;
+    padding: 0 34px;
+    color: #fff;
+    box-shadow: 0 6px 18px -10px rgba(47, 106, 18, .55);
+  }
+  .title-bar::before { content: ""; width: 4px; height: 44px; background: #fff; border-radius: 2px; }
+  .title-bar h1 { font-size: 34px; font-weight: 400; letter-spacing: .01em; text-transform: uppercase; line-height: 1; }
+  .title-bar h1 b { font-weight: 700; }
+  .title-bar .tag { margin-left: auto; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; opacity: .9; white-space: nowrap; }
+  .brand-bar {
+    background: var(--grad);
+    border-radius: var(--r-lg);
+    display: flex; align-items: center; justify-content: center; gap: 26px;
+    color: #fff; padding: 0 30px;
+  }
+  .brand-bar .logo { height: 44px; width: auto; fill: #fff; }
+  .brand-bar .sep { width: 1px; height: 40px; background: rgba(255, 255, 255, .45); }
+  .brand-bar .who { line-height: 1.15; }
+  .brand-bar .who b { display: block; font-size: 21px; letter-spacing: .02em; }
+  .brand-bar .who span { font-size: 15px; letter-spacing: .14em; text-transform: uppercase; opacity: .9; }
+
+  /* ---------- Асосий тўр ---------- */
+  .main { display: grid; grid-template-columns: 880px 1fr; gap: 22px; min-height: 0; }
+  .col { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
+
+  .panel { background: var(--panel); border-radius: var(--r-lg); overflow: hidden; }
+  .panel-head {
+    background: var(--grad);
+    color: #fff; text-align: center;
+    font-size: 27px; letter-spacing: .04em; text-transform: uppercase;
+    height: 54px; display: flex; align-items: center; justify-content: center; gap: 14px;
+  }
+  .panel-head small { font-size: 17px; letter-spacing: .14em; padding: 4px 12px; border-radius: 999px; background: rgba(255, 255, 255, .2); }
+
+  /* ---------- Чап: Таълим тизими ---------- */
+  .hero { padding: 22px 28px 20px; display: flex; flex-direction: column; gap: 14px; position: relative; flex: 1; }
+  .hero::after {
+    content: ""; position: absolute; right: -90px; top: -120px; width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 191, 53, .18), rgba(124, 191, 53, 0) 70%);
+    pointer-events: none;
+  }
+  .hero > * { flex-shrink: 0; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: var(--green-700); font-weight: 700; }
+  .eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--green-400); }
+  .lead { font-size: 23px; line-height: 1.28; color: var(--ink); max-width: 880px; }
+  .lead b { color: var(--green-700); }
+  .total { display: flex; align-items: baseline; gap: 16px; }
+  .total .num { font-size: 80px; line-height: .9; color: var(--green-600); }
+  .total span { font-size: 27px; color: var(--ink-2); }
+  .bar { display: flex; gap: 4px; height: 14px; border-radius: 999px; overflow: hidden; }
+  .bar i { display: block; border-radius: 999px; }
+  .parts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .part { background: var(--tile); border-radius: var(--r-md); padding: 12px 16px; display: flex; align-items: center; gap: 14px; }
+  .part .ico { width: 54px; height: 54px; border-radius: 14px; display: grid; place-items: center; color: #fff; font-size: 30px; }
+  .part .num { font-size: 36px; line-height: 1; }
+  .part .lbl { font-size: 20px; color: var(--ink-2); margin-top: 3px; }
+  .part .lbl em { font-style: normal; color: var(--ink-3); margin-left: 6px; }
+  .dirs { display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--tile-line); padding-top: 14px; margin-top: auto; }
+  .dirs > span:first-child { font-size: 15px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin-right: 6px; }
+  .chip { display: inline-flex; align-items: center; gap: 9px; background: var(--green-100); color: var(--green-900); border-radius: 999px; padding: 7px 16px 7px 12px; font-size: 19px; font-weight: 700; }
+  .chip svg.i { font-size: 22px; color: var(--green-600); }
+
+  /* ---------- Чап: Лойиҳа жадвали (яшил рамка) ---------- */
+  .facts { background: var(--grad-v); border-radius: var(--r-lg); padding: 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .fact { background: #fff; border-radius: var(--r-sm); height: 42px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; font-size: 20px; gap: 10px; }
+  .fact b { font-weight: 400; color: var(--green-600); white-space: nowrap; font-size: 21px; }
+  .fact.wide { grid-column: 1 / -1; }
+  .fact.wide b { font-size: 19px; color: var(--ink-3); }
+  .fact.wide b strong { color: var(--green-600); font-weight: 400; }
+
+  /* ---------- Чап: Ҳозир → 2027 ---------- */
+  .shift { padding: 0 0 4px; flex-shrink: 0; }
+  .shift .panel-head { height: 46px; font-size: 24px; }
+  .shift .row { display: grid; grid-template-columns: 200px 1fr 1fr; gap: 16px; padding: 10px 26px; align-items: center; font-size: 19px; line-height: 1.25; }
+  .shift .row + .row { border-top: 1px solid var(--tile-line); }
+  .shift .row.h { font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); padding-top: 10px; padding-bottom: 6px; }
+  .shift .row.h span:last-child { color: var(--green-700); font-weight: 700; }
+  .shift .k { font-weight: 700; display: flex; align-items: center; gap: 12px; }
+  .shift .k svg.i { font-size: 26px; color: var(--green-600); }
+  .shift .now { color: var(--ink-2); }
+  .shift .next { color: var(--green-700); font-weight: 700; display: flex; gap: 10px; align-items: flex-start; }
+  .shift .next::before { content: "→"; color: var(--green-400); }
+
+  /* ---------- Ўнг: карточкалар ---------- */
+  .cards { padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card {
+    background: var(--tile); border-radius: var(--r-md);
+    display: grid; grid-template-columns: 52px 1fr auto; align-items: center; gap: 12px;
+    padding: 8px 18px 8px 14px; min-height: 76px;
+  }
+  .card > svg.i { font-size: 46px; color: var(--green-500); stroke-width: 1.5; }
+  .card .t { font-size: 21px; line-height: 1.14; color: var(--ink); }
+  .card .t small { display: block; font-size: 15px; line-height: 1.25; color: var(--ink-3); margin-top: 3px; }
+  .card .v { text-align: center; color: var(--green-500); line-height: 1; white-space: nowrap; }
+  .card .v .num { display: block; font-size: 32px; font-weight: 400; }
+  .card .v u { text-decoration: none; display: block; font-size: 15px; margin-top: 3px; }
+  .card.wide { grid-column: 1 / -1; }
+  .card.accent { background: var(--grad); color: #fff; }
+  .card.accent > svg.i, .card.accent .v, .card.accent .t, .card.accent .t small { color: #fff; }
+  .card.accent .t small { opacity: .88; }
+  .card.accent .v .num { font-size: 40px; font-weight: 700; }
+
+  /* ---------- Ўнг: режа рўйхати ---------- */
+  .plan-list { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 10px; }
+  .pl { display: grid; grid-template-columns: 52px 1fr; gap: 12px; align-items: center; }
+  .pl > svg.i { font-size: 40px; color: var(--green-500); justify-self: center; stroke-width: 1.5; }
+  .pl .box { background: var(--tile); border-radius: var(--r-md); padding: 9px 18px; font-size: 19px; line-height: 1.26; }
+  .pl .box em { font-style: normal; color: var(--green-600); font-weight: 700; }
+  .pl .box small { display: block; font-size: 15px; color: var(--ink-3); margin-top: 3px; }
+  .pl .box.chips { display: flex; flex-wrap: wrap; gap: 6px 7px; align-items: center; }
+  .pl .box.chips > span:first-child { color: var(--ink-2); margin-right: 4px; }
+  .pl .box.chips i { font-style: normal; background: #fff; border: 1px solid var(--tile-line); border-radius: 999px; padding: 2px 12px; font-size: 16px; }
+  .pl .box.goal { border-left: 5px solid var(--green-400); }
+
+  .right .panel:first-child { flex: 0 0 auto; }
+  .right .panel:last-child { flex: 1; display: flex; flex-direction: column; }
+  .right .panel:last-child .plan-list { flex: 1; justify-content: space-evenly; }
+
+  /* ---------- Кириш анимацияси ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { opacity: 0; transform: translateY(14px); animation: rise .7s cubic-bezier(.16, 1, .3, 1) forwards; animation-delay: var(--d, 0s); }
+    .bar i { transform-origin: left; animation: grow 1s cubic-bezier(.16, 1, .3, 1) both; animation-delay: var(--d, .4s); }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    @keyframes grow { from { transform: scaleX(0); } }
+  }
+
+  /* ---------- Тор экран: оддий вертикал оқим ---------- */
+  body.flow { overflow: auto; }
+  body.flow .viewport { position: static; display: block; }
+  body.flow .stage { position: static; width: 100%; height: auto; transform: none !important; padding: 14px 16px 24px; grid-template-rows: auto auto; gap: 14px; }
+  body.flow .top, body.flow .main { grid-template-columns: 1fr; gap: 14px; }
+  body.flow .col { gap: 14px; }
+  body.flow .title-bar { padding: 16px 20px; flex-wrap: wrap; gap: 10px 14px; }
+  body.flow .title-bar::before { height: 30px; }
+  body.flow .title-bar h1 { font-size: 21px; line-height: 1.2; flex: 1; }
+  body.flow .title-bar .tag { margin-left: 0; font-size: 13px; }
+  body.flow .brand-bar { padding: 14px 18px; justify-content: flex-start; gap: 16px; }
+  body.flow .brand-bar .logo { height: 32px; }
+  body.flow .brand-bar .who b { font-size: 17px; }
+  body.flow .brand-bar .who span { font-size: 12px; }
+  body.flow .panel-head { font-size: 19px; height: 46px; }
+  body.flow .panel-head small { font-size: 12px; }
+  body.flow .hero { padding: 18px; gap: 14px; }
+  body.flow .lead { font-size: 18px; }
+  body.flow .total .num { font-size: 60px; }
+  body.flow .total { flex-wrap: wrap; gap: 4px 12px; }
+  body.flow .total span { font-size: 19px; }
+  body.flow .parts { grid-template-columns: 1fr; gap: 8px; }
+  body.flow .part .num { font-size: 30px; }
+  body.flow .part .lbl { font-size: 17px; }
+  body.flow .part .ico { width: 44px; height: 44px; font-size: 24px; }
+  body.flow .dirs { flex-wrap: wrap; }
+  body.flow .dirs > span:first-child { width: 100%; font-size: 13px; }
+  body.flow .chip { font-size: 16px; }
+  body.flow .facts { grid-template-columns: 1fr; }
+  body.flow .fact { font-size: 17px; height: auto; min-height: 42px; padding: 8px 14px; }
+  body.flow .fact b { font-size: 17px; }
+  body.flow .fact.wide { flex-direction: column; align-items: flex-start; gap: 2px; }
+  body.flow .fact.wide b { font-size: 15px; white-space: normal; }
+  body.flow .shift .row { grid-template-columns: 1fr; gap: 4px; padding: 12px 18px; font-size: 16px; }
+  body.flow .shift .row.h { display: none; }
+  body.flow .shift .now::before { content: "Ҳозир: "; color: var(--ink-3); }
+  body.flow .cards { grid-template-columns: 1fr; padding: 10px; gap: 8px; }
+  body.flow .card { grid-template-columns: 40px 1fr auto; min-height: 0; padding: 12px 14px; gap: 10px; }
+  body.flow .card > svg.i { font-size: 36px; }
+  body.flow .card .t { font-size: 17px; }
+  body.flow .card .t small { font-size: 13px; }
+  body.flow .card .v .num { font-size: 26px; }
+  body.flow .card.accent .v .num { font-size: 28px; }
+  body.flow .card .v u { font-size: 13px; }
+  body.flow .plan-list { padding: 0 10px 10px; gap: 8px; }
+  body.flow .pl { grid-template-columns: 1fr; }
+  body.flow .pl > svg.i { display: none; }
+  body.flow .pl .box { font-size: 16px; padding: 12px 14px; }
+  body.flow .pl .box small { font-size: 14px; }
+  body.flow .pl .box.chips i { font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- Иконкалар -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5-10 4.5L2 9.5Z"/><path d="M6 11.3v4.4c0 1.4 2.7 3.3 6 3.3s6-1.9 6-3.3v-4.4"/><path d="M22 9.5v5"/></symbol>
+    <symbol id="i-cert" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M7 8.5h10M7 12h6"/><circle cx="16.5" cy="15.5" r="2.5"/><path d="m15.2 17.6-.7 3.4 2-1.1 2 1.1-.7-3.4"/></symbol>
+    <symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="10.5" rx="1.5"/><path d="M2 18.5h20"/><path d="m10 9-1.8 1.8L10 12.6M14 9l1.8 1.8L14 12.6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3Z"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="9" cy="6.5" rx="6" ry="2.5"/><path d="M3 6.5v4c0 1.4 2.7 2.5 6 2.5M3 10.5v4c0 1.4 2.7 2.5 6 2.5"/><circle cx="16" cy="15" r="5.5"/><path d="M17.6 13.2c-.3-.5-.9-.8-1.6-.8-.9 0-1.6.5-1.6 1.2 0 1.6 3.3.9 3.3 2.6 0 .7-.8 1.2-1.7 1.2-.8 0-1.4-.3-1.7-.8M16 11.4v1M16 17.4v1"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 2.5c3 2 4.5 5.2 4.5 9.2L14.8 16H9.2l-1.7-4.3c0-4 1.5-7.2 4.5-9.2Z"/><circle cx="12" cy="9" r="1.8"/><path d="m7.5 11.7-3 3.3 1 3 3.7-2M16.5 11.7l3 3.3-1 3-3.7-2M10.5 19l1.5 2.5 1.5-2.5"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="17" cy="9" r="2.6"/><path d="M16.5 14.1c2.9.2 5 2.2 5 5.4"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18"/><rect x="5" y="3" width="9" height="18"/><path d="M14 9h5v12"/><path d="M8 7h3M8 11h3M8 15h3M16.5 13h0M16.5 16.5h0"/></symbol>
+    <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/><circle cx="12" cy="11" r="1.7"/></symbol>
+    <symbol id="i-kid" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M8.5 21v-5.5L6 12.5l2.2-2.2c1-.9 2.3-1.3 3.8-1.3s2.8.4 3.8 1.3l2.2 2.2-2.5 3V21M10.5 21v-4M13.5 21v-4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></symbol>
+    <symbol id="i-mega" viewBox="0 0 24 24"><path d="M3 10v4a1 1 0 0 0 1 1h2l9 5V4L6 9H4a1 1 0 0 0-1 1Z"/><path d="M7 15.5 8.5 21h2.5L10 16.5M18.5 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-robot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4.5M12 4.5h0M2 13v2M22 13v2"/><circle cx="9" cy="13" r="1.3"/><circle cx="15" cy="13" r="1.3"/><path d="M9.5 16.5h5"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9.5 12 4l9 5.5H3ZM4 20h16M6 10v7M10 10v7M14 10v7M18 10v7"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/><path d="M15 8h5v5"/></symbol>
+    <symbol id="i-brief" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M3 12.5h18M11 12.5v1.5h2v-1.5"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3"/><path d="m13 11 7-7M17 4h3v3"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9.5 15 11 9h2l1.5 6M10 13h4"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+    <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M3 13.5h3.5l3 2h4a1.5 1.5 0 0 1 0 3H9"/><path d="M6.5 19.5h7.8l6.2-4a1.5 1.5 0 0 0-1.7-2.5L15 15"/><circle cx="14.5" cy="7" r="3.5"/><path d="M14.5 5.5v3"/></symbol>
+  </defs>
+</svg>
+
+<div class="viewport">
+  <div class="stage" id="stage">
+
+    <!-- ========== Сарлавҳа ========== -->
+    <header class="top">
+      <div class="title-bar reveal">
+        <h1><b>«Academy IT Star»</b> — Сунъий интеллект маркази</h1>
+        <span class="tag">Жорий ҳолат · 2027 режа</span>
+      </div>
+      <div class="brand-bar reveal" style="--d:.05s">
+        <svg class="logo" viewBox="0 0 228 182" role="img" aria-label="MBSI"><path d="M0 0C52.58 0 85.33 14.13 114 33.22C142.67 14.13 175.42 0 228 0L228 25C172.29 20.02 141.68 41.11 114 58.95C86.32 41.11 55.71 20.02 0 25ZM204 10h24v49h-24zM0 34h26v26H0zM0 72C51 72 84.43 86.41 114 106.19C143.57 86.41 177 72 228 72L228 150C175.63 150 142.62 165 114 182C85.38 165 52.37 150 0 150Z"/></svg>
+        <span class="sep"></span>
+        <div class="who"><b>MBSI · Балиқчи тумани</b><span>Сунъий интеллект маркази</span></div>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- ========== ЧАП УСТУН ========== -->
+      <div class="col left">
+
+        <section class="panel hero reveal" style="--d:.1s" aria-label="Таълим тизими">
+          <span class="eyebrow">Таълим тизими · бугун</span>
+          <p class="lead">Қишлоқ ва туман ёшларига ўз ҳудудида <b>нуфузли IT марказлар даражасида</b> замонавий таълим</p>
+
+          <div class="total"><span class="num" data-to="1415">1&nbsp;415</span><span>нафар бола тизимда</span></div>
+
+          <div class="bar" role="img" aria-label="Мактаб 715, Боғча 200, IT Academy 500">
+            <i style="width:50.5%;background:var(--green-600);--d:.45s"></i>
+            <i style="width:14.1%;background:var(--green-300);--d:.55s"></i>
+            <i style="width:35.4%;background:#b9d99a;--d:.65s"></i>
+          </div>
+
+          <div class="parts">
+            <div class="part">
+              <span class="ico" style="background:var(--green-600)"><svg class="i"><use href="#i-school"/></svg></span>
+              <div><div class="num" data-to="715">715</div><div class="lbl">Мактаб<em>51%</em></div></div>
+            </div>
+            <div class="part">
+              <span class="ico" style="background:var(--green-300)"><svg class="i"><use href="#i-kid"/></svg></span>
+              <div><div class="num" data-to="200">200</div><div class="lbl">Боғча<em>14%</em></div></div>
+            </div>
+            <div class="part">
+              <span class="ico" style="background:#a4cd7c"><svg class="i"><use href="#i-laptop"/></svg></span>
+              <div><div class="num" data-to="500">500</div><div class="lbl">IT Academy<em>35%</em></div></div>
+            </div>
+          </div>
+
+          <div class="dirs">
+            <span>IT Academy йўналишлари</span>
+            <span class="chip"><svg class="i"><use href="#i-code"/></svg>Дастурлаш</span>
+            <span class="chip"><svg class="i"><use href="#i-mega"/></svg>Маркетинг</span>
+            <span class="chip"><svg class="i"><use href="#i-robot"/></svg>Робототехника</span>
+          </div>
+        </section>
+
+        <section class="facts reveal" style="--d:.18s" aria-label="Лойиҳа кўрсаткичлари">
+          <div class="fact">Лойиҳа қиймати<b>15 млрд сўм</b></div>
+          <div class="fact">Йиллик хизмат кўрсатиш<b>16 млрд сўм</b></div>
+          <div class="fact">Тадбиркор маблағи<b>13 млрд сўм</b></div>
+          <div class="fact">Экспорт<b>3,6 млрд сўм</b></div>
+          <div class="fact">Банк кредити<b>2 млрд сўм</b></div>
+          <div class="fact">Иш ўрни<b>100 та</b></div>
+          <div class="fact wide" title="«Мамлакатимизда рақамлаштириш соҳасидаги хизматлар экспортини ривожлантириш тўғрисида»ги қарор">Асос<b><strong>ПҚ-87</strong> қарори, 26-февраль, 2024</b></div>
+        </section>
+
+        <section class="panel shift reveal" style="--d:.26s" aria-label="Ҳозирги ҳолат ва 2027 йил режаси">
+          <div class="panel-head">Ҳозир → 2027</div>
+          <div class="row h"><span>Йўналиш</span><span>Ҳозир</span><span>2027</span></div>
+          <div class="row">
+            <span class="k"><svg class="i"><use href="#i-rocket"/></svg>Стартаплар</span>
+            <span class="now">20 дан ортиқ лойиҳа ишлаб чиқилган</span>
+            <span class="next">20 та стартапга 2 млн $ инвестиция</span>
+          </div>
+          <div class="row">
+            <span class="k"><svg class="i"><use href="#i-users"/></svg>Кадр тайёрлаш</span>
+            <span class="now">IT Academy — 500 нафар · 1 000 фрилансер</span>
+            <span class="next">Сунъий интеллект ва замонавий касблар техникуми</span>
+          </div>
+        </section>
+      </div>
+
+      <!-- ========== ЎНГ УСТУН ========== -->
+      <div class="col right">
+
+        <section class="panel reveal" style="--d:.14s" aria-label="Фаолият тўғрисида">
+          <div class="panel-head">Фаолият тўғрисида <small>шу кунгача</small></div>
+          <div class="cards">
+            <div class="card">
+              <svg class="i"><use href="#i-cap"/></svg>
+              <div class="t">Таҳсил олган<br>ўқувчилар</div>
+              <div class="v"><span class="num" data-to="6000">6&nbsp;000</span><u>нафар</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-cert"/></svg>
+              <div class="t">Хорижий тил<br>сертификати</div>
+              <div class="v"><span class="num" data-to="3000">3&nbsp;000</span><u>та</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-laptop"/></svg>
+              <div class="t">Тайёрланган фрилансерлар<small>200 нафари: ойига 500–2 000 $</small></div>
+              <div class="v"><span class="num" data-to="1000">1&nbsp;000</span><u>нафар</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-globe"/></svg>
+              <div class="t">Хориждаги TOP-100 университетларда ўқиб-ишламоқда</div>
+              <div class="v"><span class="num" data-to="60">60</span><u>нафар</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-coins"/></svg>
+              <div class="t">Халқаро грант<small>жорий йилда</small></div>
+              <div class="v"><span class="num" data-to="1.24" data-dec="2">1,24</span><u>млн $</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-rocket"/></svg>
+              <div class="t">Стартап лойиҳалар<small>AI Hub IT жамоаси</small></div>
+              <div class="v"><span class="num" data-to="20" data-suf="+">20+</span><u>та</u></div>
+            </div>
+            <div class="card wide accent">
+              <svg class="i"><use href="#i-hand"/></svg>
+              <div class="t"><b>500 дан ортиқ</b> тадбиркорлик субъектига IT хизмати кўрсатилган<small>IT жамоа · 40 нафар — сунъий интеллект асосида бизнесни ривожлантириш бўйича консалтинг</small></div>
+              <div class="v"><span class="num">8,5</span><u>млрд сўм</u></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel reveal" style="--d:.22s" aria-label="Режалар">
+          <div class="panel-head">Режалар <small>2027</small></div>
+          <div class="cards">
+            <div class="card">
+              <svg class="i"><use href="#i-chart"/></svg>
+              <div class="t">Инвестиция жалб қилиш<small>мақсад</small></div>
+              <div class="v"><span class="num" data-to="2">2</span><u>млн $</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-rocket"/></svg>
+              <div class="t">Стартап лойиҳалар<small>ҳозирда тайёрланмоқда</small></div>
+              <div class="v"><span class="num" data-to="20">20</span><u>та</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-building"/></svg>
+              <div class="t">Тадбиркорлик субъектлари<small>вилоятда, асосан ишлаб чиқариш ва хизмат кўрсатиш соҳасида</small></div>
+              <div class="v"><span class="num" data-to="64909">64&nbsp;909</span><u>та</u></div>
+            </div>
+            <div class="card">
+              <svg class="i"><use href="#i-brief"/></svg>
+              <div class="t">Тажрибали мутахассисга эҳтиёж<small>ҳар бир субъектга ўртача 2 нафар</small></div>
+              <div class="v"><span class="num" data-to="129818">129&nbsp;818</span><u>нафардан ортиқ</u></div>
+            </div>
+          </div>
+
+          <div class="plan-list">
+            <div class="pl">
+              <svg class="i"><use href="#i-school"/></svg>
+              <div class="box"><em>2027 йилда</em> сунъий интеллект ва замонавий касбларга ихтисослаштирилган <em>техникум</em> фаолияти йўлга қўйилади<small>Вужудга келаётган кадрлар етишмовчилигини тўлдириш мақсадида</small></div>
+            </div>
+            <div class="pl">
+              <svg class="i"><use href="#i-ai"/></svg>
+              <div class="box chips">
+                <span>Эҳтиёж бўлган касблар:</span>
+                <i>Сунъий интеллект мутахассиси</i><i>SMM менежери</i><i>Мобилограф</i><i>График дизайнер</i><i>Маркетолог</i><i>Маълумотлар таҳлилчиси</i>
+              </div>
+            </div>
+            <div class="pl">
+              <svg class="i"><use href="#i-target"/></svg>
+              <div class="box goal">Тайёрланган мутахассислар тадбиркорлик субъектларининг <em>халқаро ва маҳаллий бозорларда</em> катта брендга айланиши ва савдо ҳажмини оширишига кўмаклашади</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  // 1920×1080 полотнони экранга мослаш; тор экранда — оддий вертикал оқим
+  (function () {
+    var stage = document.getElementById("stage");
+    function fit() {
+      var w = window.innerWidth, h = window.innerHeight;
+      var flow = w < 1000 || w / h < 1.1;
+      document.body.classList.toggle("flow", flow);
+      stage.style.transform = flow ? "" : "translate(-50%, -50%) scale(" + Math.min(w / 1920, h / 1080) + ")";
+    }
+    window.addEventListener("resize", fit);
+    fit();
+  })();
+
+  // Рақамларни санаб чиқиш
+  (function () {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    function fmt(v, dec) {
+      var p = v.toFixed(dec).split(".");
+      p[0] = p[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      return p.join(",");
+    }
+    document.querySelectorAll("[data-to]").forEach(function (el) {
+      var to = parseFloat(el.dataset.to), dec = +(el.dataset.dec || 0), suf = el.dataset.suf || "";
+      var start = performance.now() + 350, dur = 1400;
+      function tick(now) {
+        var t = Math.min(1, Math.max(0, (now - start) / dur));
+        var e = 1 - Math.pow(1 - t, 4);
+        el.textContent = fmt(to * e, dec) + suf;
+        if (t < 1) requestAnimationFrame(tick);
+      }
+      el.textContent = fmt(0, dec) + suf;
+      requestAnimationFrame(tick);
+    });
+  })();
+</script>
+</body>
+</html>
